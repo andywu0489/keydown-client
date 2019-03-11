@@ -1,0 +1,30 @@
+@import '~bootstrap/scss/bootstrap';
+
+.row {
+  border: 1px solid black;
+  height: 75px;
+  width: 200px;
+}
+
+h1 {
+  color: red;
+}
+
+.box {
+  border: 1px solid black;
+}
+
+body {
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: flex-end;
+  margin: auto;
+  width: auto;
+  //border: 1px solid black;
+}
+
+// .box-one {
+//   height: 50px;
+//   width: 30px;
+//   background-color: red;
+// }
