@@ -28,3 +28,46 @@ body {
 //   width: 30px;
 //   background-color: red;
 // }
+
+.home-container {
+    margin-top: 3vh;
+    height: 97vh;
+    width: 50vw;
+  }
+
+.game-container {
+  margin-top: 3vh;
+  height: 97vh;
+  width: 50vw;
+}
+
+#game-board {
+  display: none;
+}
+
+.start-game {
+  display: none;
+}
+
+.game-over {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-jumbotron {
+  margin-top: 3vh;
+  height: 97vh;
+  width: 50vw;
+}
+
+.start-jumbotron {
+  display: flex;
+  margin-top: 3vh;
+  height: 97vh;
+  width: 50vw;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
