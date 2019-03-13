@@ -5,6 +5,9 @@ const authEvents = require('./authorization/events')
 $(() => {
   $('.start-game').on('click', events.onStartGame)
   $('.replay').on('click', events.onStartGame)
+
+  $('#index-button').on('click', events.onGetGames)
+  $('#content').on('click', '#delete', events.onDeleteGame)
   // $(document).on('keydown', events.checkZPressed)
   // $(document).on('keydown', events.checkXPressed)
   // $(document).on('keydown', events.checkCPressed)

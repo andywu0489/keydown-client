@@ -1,5 +1,4 @@
 'use strict'
-const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
@@ -73,18 +72,35 @@ const layoutSpaces = () => {
   }
 }
 
-let timeleft = 5
+let timeleft = 30
 
-const onStartGame = () => {
-  const countdown = setInterval(function () {
-    document.getElementById('countdown').innerHTML = `Time Remaining: ${timeleft}`
+const countdown = () => {
+  store.timer = setInterval(function () {
+    $('#countdown').html(`Time Remaining: ${timeleft}`)
     timeleft -= 1
     if (timeleft < 0) {
-      clearInterval(countdown)
+      clearInterval(store.timer)
       gameOver()
-      timeleft = 5
+      timeleft = 30
     }
   }, 1000)
+}
+
+// CREATE GAME
+const onStartGame = (score, accuracy) => {
+  event.preventDefault()
+  const data =
+  {
+    'game': {
+      'score': 0,
+      'accuracy': 0,
+      'owner': store.user._id
+    }
+  }
+  api.createGame(data)
+    .then(ui.onCreateGameSuccess)
+    .catch(ui.onCreateGameFailure)
+  countdown()
   clearSpaces()
   board = []
   score = 0
@@ -92,6 +108,10 @@ const onStartGame = () => {
   missedClicks = 0
   // setTimeout(gameOver, 5000)
   $('#game-board').show()
+  $(document).off('keydown', checkZPressed)
+  $(document).off('keydown', checkXPressed)
+  $(document).off('keydown', checkCPressed)
+  $(document).off('keydown', checkVPressed)
   $(document).on('keydown', checkZPressed)
   $(document).on('keydown', checkXPressed)
   $(document).on('keydown', checkCPressed)
@@ -101,8 +121,24 @@ const onStartGame = () => {
   }
   layoutSpaces()
   $('.score').html(`Score: ${score}`)
-  $('.start-game').hide()
+  $('.home').hide()
   $('.game-over').hide()
+  timeleft = 30
+}
+
+// UPDATE GAME
+const onUpdateGame = (score, accuracy) => {
+  const data =
+  {
+    'game': {
+      'score': score,
+      'accuracy': accuracy,
+      'owner': store.user._id
+    }
+  }
+  api.updateGame(data)
+    .then(ui.onUpdateGameSuccess)
+    .catch(ui.onUpdateGameFailure)
 }
 
 const gameOver = () => {
@@ -166,8 +202,10 @@ let missedClicks = 0
 const checkZPressed = (event) => {
   if (event.which === 90 && board[0][0] === 'x') {
     onClick()
+    onUpdateGame(score, accuracy)
   } else if (event.which === 90) {
     missedClicks = missedClicks + 1
+    onUpdateGame(score, accuracy)
   }
   // console.log(`total: ${missedClicks}`)
 }
@@ -175,8 +213,10 @@ const checkZPressed = (event) => {
 const checkXPressed = (event) => {
   if (event.which === 88 && board[0][1] === 'x') {
     onClick()
+    onUpdateGame(score, accuracy)
   } else if (event.which === 88) {
     missedClicks = missedClicks + 1
+    onUpdateGame(score, accuracy)
   }
   // console.log(`total: ${missedClicks}`)
 }
@@ -184,8 +224,10 @@ const checkXPressed = (event) => {
 const checkCPressed = (event) => {
   if (event.which === 67 && board[0][2] === 'x') {
     onClick()
+    onUpdateGame(score, accuracy)
   } else if (event.which === 67) {
     missedClicks = missedClicks + 1
+    onUpdateGame(score, accuracy)
   }
   // console.log(`total: ${missedClicks}`)
 }
@@ -193,8 +235,10 @@ const checkCPressed = (event) => {
 const checkVPressed = (event) => {
   if (event.which === 86 && board[0][3] === 'x') {
     onClick()
+    onUpdateGame(score, accuracy)
   } else if (event.which === 86) {
     missedClicks = missedClicks + 1
+    onUpdateGame(score, accuracy)
   }
   // console.log(`total: ${missedClicks}`)
 }
@@ -211,10 +255,6 @@ const onClick = () => {
   correctClicks = correctClicks + 1
   totalClicks = correctClicks + missedClicks
   accuracy = correctClicks / totalClicks * 100
-  console.log(`%: ${accuracy}`)
-  console.log(`correct: ${correctClicks}`)
-  console.log(`missed: ${missedClicks}`)
-  console.log(`total: ${totalClicks}`)
 }
 
 let score = 0
@@ -227,13 +267,33 @@ let totalClicks = 0
 
 let accuracy = 0
 
-// const onHome = () => {
-//   clearSpaces()
-//   timeleft = -1
-//   $('#game-board').hide()
-//   $('.game-over').hide()
-//   $('.start-game').show()
-// }
+const onHome = () => {
+  clearInterval(store.timer)
+  $('#game-board').hide()
+  $('.home').show()
+  $('.game-over').hide()
+  timeleft = 30
+}
+
+const onGetGames = function (responseData) {
+  api.index()
+    .then(ui.onGetGamesSuccess)
+    .catch(ui.onGetGamesFailure)
+}
+
+const onGetGamesAfterDelete = function () {
+  api.index()
+    .then(ui.onGetGamesAfterDeleteSuccess)
+    .catch(ui.onGetGamesFailure)
+}
+
+const onDeleteGame = (event) => {
+  event.preventDefault()
+  const target = $(event.target).closest('section').data('id')
+  api.destroy(target)
+    .then(() => onGetGamesAfterDelete())
+    .catch(ui.onDeleteGameFailure)
+}
 
 module.exports = {
   onStartGame,
@@ -241,6 +301,12 @@ module.exports = {
   checkZPressed,
   checkXPressed,
   checkCPressed,
-  checkVPressed
-  // onHome
+  checkVPressed,
+  onGetGames,
+  onDeleteGame,
+  onGetGamesAfterDelete,
+  onUpdateGame,
+  clearSpaces,
+  gameOver,
+  onHome
 }
