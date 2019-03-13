@@ -1,0 +1,12 @@
+{{#each games as |game|}}
+
+<section data-id="{{game._id}}">
+  <div class="listed-items">
+
+    <h4>Score: {{game.score}}</h4>
+    <h6>Accuracy: {{game.accuracy}}%</h6>
+    <h6>Played on: {{game.createdAt}}</h6>
+    <button id='delete'>Delete</button>
+  </div>
+</section>
+{{/each}}
