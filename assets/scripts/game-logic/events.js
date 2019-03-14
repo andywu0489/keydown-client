@@ -237,17 +237,25 @@ const checkVPressed = (event) => {
 let correctClicks = 0
 
 const onWrongClick = () => {
+  $(document).off('keydown', checkZPressed)
+  $(document).off('keydown', checkXPressed)
+  $(document).off('keydown', checkCPressed)
+  $(document).off('keydown', checkVPressed)
+  setTimeout(function () { $(document).on('keydown', checkZPressed) }, 1000)
+  setTimeout(function () { $(document).on('keydown', checkXPressed) }, 1000)
+  setTimeout(function () { $(document).on('keydown', checkCPressed) }, 1000)
+  setTimeout(function () { $(document).on('keydown', checkVPressed) }, 1000)
   missedClicks = missedClicks + 1
   totalClicks = correctClicks + missedClicks
   accuracy1 = correctClicks / totalClicks * 100
   accuracy = Math.floor(accuracy1 * 100) / 100
-  $('.start-jumbotron').css('border', '15px solid red')
+  $('.start-jumbotron').css('border', '3px solid red')
   setTimeout(function () { $('.start-jumbotron').css('border', 0) }, 50)
 }
 
 const onClick = () => {
   console.log('hi')
-  $('.start-jumbotron').css('border', '15px solid #6bf442')
+  $('.start-jumbotron').css('border', '3px solid #6bf442')
   setTimeout(function () { $('.start-jumbotron').css('border', 0) }, 50)
   shiftBoard()
   generateRow()
