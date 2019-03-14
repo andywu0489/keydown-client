@@ -107,7 +107,6 @@ const onStartGame = (score, accuracy) => {
   score = 0
   correctClicks = 0
   missedClicks = 0
-  // setTimeout(gameOver, 5000)
   $('#game-board').show()
   $(document).off('keydown', checkZPressed)
   $(document).off('keydown', checkXPressed)
@@ -254,7 +253,6 @@ const onWrongClick = () => {
 }
 
 const onClick = () => {
-  console.log('hi')
   $('.start-jumbotron').css('border', '3px solid #6bf442')
   setTimeout(function () { $('.start-jumbotron').css('border', 0) }, 50)
   shiftBoard()
