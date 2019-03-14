@@ -16,59 +16,59 @@ const generateRow = () => {
 
 const layoutSpaces = () => {
   if (board[0][0] === 'x') {
-    $('.1-box-one').html('x')
+    $('#1').css('background-color', 'black')
   } else if (board[0][1] === 'x') {
-    $('.1-box-two').html('x')
+    $('#2').css('background-color', 'black')
   } else if (board[0][2] === 'x') {
-    $('.1-box-three').html('x')
+    $('#3').css('background-color', 'black')
   } else if (board[0][3] === 'x') {
-    $('.1-box-four').html('x')
+    $('#4').css('background-color', 'black')
   }
 
   if (board[1][0] === 'x') {
-    $('.2-box-one').html('x')
+    $('#5').css('background-color', 'black')
   } else if (board[1][1] === 'x') {
-    $('.2-box-two').html('x')
+    $('#6').css('background-color', 'black')
   } else if (board[1][2] === 'x') {
-    $('.2-box-three').html('x')
+    $('#7').css('background-color', 'black')
   } else if (board[1][3] === 'x') {
-    $('.2-box-four').html('x')
+    $('#8').css('background-color', 'black')
   }
   if (board[2][0] === 'x') {
-    $('.3-box-one').html('x')
+    $('#9').css('background-color', 'black')
   } else if (board[2][1] === 'x') {
-    $('.3-box-two').html('x')
+    $('#10').css('background-color', 'black')
   } else if (board[2][2] === 'x') {
-    $('.3-box-three').html('x')
+    $('#11').css('background-color', 'black')
   } else if (board[2][3] === 'x') {
-    $('.3-box-four').html('x')
+    $('#12').css('background-color', 'black')
   }
   if (board[3][0] === 'x') {
-    $('.4-box-one').html('x')
+    $('#13').css('background-color', 'black')
   } else if (board[3][1] === 'x') {
-    $('.4-box-two').html('x')
+    $('#14').css('background-color', 'black')
   } else if (board[3][2] === 'x') {
-    $('.4-box-three').html('x')
+    $('#15').css('background-color', 'black')
   } else if (board[3][3] === 'x') {
-    $('.4-box-four').html('x')
+    $('#16').css('background-color', 'black')
   }
   if (board[4][0] === 'x') {
-    $('.5-box-one').html('x')
+    $('#17').css('background-color', 'black')
   } else if (board[4][1] === 'x') {
-    $('.5-box-two').html('x')
+    $('#18').css('background-color', 'black')
   } else if (board[4][2] === 'x') {
-    $('.5-box-three').html('x')
+    $('#19').css('background-color', 'black')
   } else if (board[4][3] === 'x') {
-    $('.5-box-four').html('x')
+    $('#20').css('background-color', 'black')
   }
   if (board[5][0] === 'x') {
-    $('.6-box-one').html('x')
+    $('#21').css('background-color', 'black')
   } else if (board[5][1] === 'x') {
-    $('.6-box-two').html('x')
+    $('#22').css('background-color', 'black')
   } else if (board[5][2] === 'x') {
-    $('.6-box-three').html('x')
+    $('#23').css('background-color', 'black')
   } else if (board[5][3] === 'x') {
-    $('.6-box-four').html('x')
+    $('#24').css('background-color', 'black')
   }
 }
 
@@ -100,6 +100,7 @@ const onStartGame = (score, accuracy) => {
   api.createGame(data)
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFailure)
+  $('#countdown').html(`Time Remaining: ${timeleft}`)
   countdown()
   clearSpaces()
   board = []
@@ -149,8 +150,9 @@ const gameOver = () => {
   $('#game-board').hide()
   // $('.start-game').show()
   $('.final-score').html(`Score: ${score}`)
-  $('.accuracy').html(`Accuracy: ${Math.floor(accuracy * 100) / 100}%`)
+  $('.accuracy').html(`Accuracy: ${accuracy}%`)
   $('.game-over').show()
+  score = 0
 }
 
 const shiftBoard = () => {
@@ -159,35 +161,35 @@ const shiftBoard = () => {
 }
 
 const clearSpaces = () => {
-  $('.1-box-one').html('')
-  $('.1-box-two').html('')
-  $('.1-box-three').html('')
-  $('.1-box-four').html('')
+  $('#1').css('background-color', 'white')
+  $('#2').css('background-color', 'white')
+  $('#3').css('background-color', 'white')
+  $('#4').css('background-color', 'white')
 
-  $('.2-box-one').html('')
-  $('.2-box-two').html('')
-  $('.2-box-three').html('')
-  $('.2-box-four').html('')
+  $('#5').css('background-color', 'white')
+  $('#6').css('background-color', 'white')
+  $('#7').css('background-color', 'white')
+  $('#8').css('background-color', 'white')
 
-  $('.3-box-one').html('')
-  $('.3-box-two').html('')
-  $('.3-box-three').html('')
-  $('.3-box-four').html('')
+  $('#9').css('background-color', 'white')
+  $('#10').css('background-color', 'white')
+  $('#11').css('background-color', 'white')
+  $('#12').css('background-color', 'white')
 
-  $('.4-box-one').html('')
-  $('.4-box-two').html('')
-  $('.4-box-three').html('')
-  $('.4-box-four').html('')
+  $('#13').css('background-color', 'white')
+  $('#14').css('background-color', 'white')
+  $('#15').css('background-color', 'white')
+  $('#16').css('background-color', 'white')
 
-  $('.5-box-one').html('')
-  $('.5-box-two').html('')
-  $('.5-box-three').html('')
-  $('.5-box-four').html('')
+  $('#17').css('background-color', 'white')
+  $('#18').css('background-color', 'white')
+  $('#19').css('background-color', 'white')
+  $('#20').css('background-color', 'white')
 
-  $('.6-box-one').html('')
-  $('.6-box-two').html('')
-  $('.6-box-three').html('')
-  $('.6-box-four').html('')
+  $('#21').css('background-color', 'white')
+  $('#22').css('background-color', 'white')
+  $('#23').css('background-color', 'white')
+  $('#24').css('background-color', 'white')
 }
 
 let missedClicks = 0
@@ -203,47 +205,50 @@ const checkZPressed = (event) => {
   if (event.which === 90 && board[0][0] === 'x') {
     onClick()
     onUpdateGame(score, accuracy)
-  } else if (event.which === 90) {
-    missedClicks = missedClicks + 1
+  } else if (event.which === 90 && board[0][0] !== 'x') {
+    onWrongClick()
     onUpdateGame(score, accuracy)
   }
-  // console.log(`total: ${missedClicks}`)
 }
 
 const checkXPressed = (event) => {
   if (event.which === 88 && board[0][1] === 'x') {
     onClick()
     onUpdateGame(score, accuracy)
-  } else if (event.which === 88) {
-    missedClicks = missedClicks + 1
+  } else if (event.which === 88 && board[0][1] !== 'x') {
+    onWrongClick()
     onUpdateGame(score, accuracy)
   }
-  // console.log(`total: ${missedClicks}`)
 }
 
 const checkCPressed = (event) => {
   if (event.which === 67 && board[0][2] === 'x') {
     onClick()
     onUpdateGame(score, accuracy)
-  } else if (event.which === 67) {
-    missedClicks = missedClicks + 1
+  } else if (event.which === 67 && board[0][2] !== 'x') {
+    onWrongClick()
     onUpdateGame(score, accuracy)
   }
-  // console.log(`total: ${missedClicks}`)
 }
 
 const checkVPressed = (event) => {
   if (event.which === 86 && board[0][3] === 'x') {
     onClick()
     onUpdateGame(score, accuracy)
-  } else if (event.which === 86) {
-    missedClicks = missedClicks + 1
+  } else if (event.which === 86 && board[0][3] !== 'x') {
+    onWrongClick()
     onUpdateGame(score, accuracy)
   }
-  // console.log(`total: ${missedClicks}`)
 }
 
 let correctClicks = 0
+
+const onWrongClick = () => {
+  missedClicks = missedClicks + 1
+  totalClicks = correctClicks + missedClicks
+  accuracy1 = correctClicks / totalClicks * 100
+  accuracy = Math.floor(accuracy1 * 100) / 100
+}
 
 const onClick = () => {
   shiftBoard()
@@ -254,7 +259,8 @@ const onClick = () => {
   $('.score').html(`Score: ${score}`)
   correctClicks = correctClicks + 1
   totalClicks = correctClicks + missedClicks
-  accuracy = correctClicks / totalClicks * 100
+  accuracy1 = correctClicks / totalClicks * 100
+  accuracy = Math.floor(accuracy1 * 100) / 100
 }
 
 let score = 0
@@ -265,20 +271,32 @@ const add = () => {
 
 let totalClicks = 0
 
+let accuracy1 = 0
+
 let accuracy = 0
 
 const onHome = () => {
   clearInterval(store.timer)
+  $('#user-message').html('<div class="alert alert-success">Welcome Home</div>')
+  setTimeout(function () { $('#user-message').html('') }, 1000)
   $('#game-board').hide()
   $('.home').show()
   $('.game-over').hide()
+  $('.my-scores').hide()
   timeleft = 30
+  score = 0
 }
 
 const onGetGames = function (responseData) {
   api.index()
     .then(ui.onGetGamesSuccess)
     .catch(ui.onGetGamesFailure)
+  $('#game-board').hide()
+  $('.home').hide()
+  $('.game-over').hide()
+  clearInterval(store.timer)
+  timeleft = 30
+  score = 0
 }
 
 const onGetGamesAfterDelete = function () {

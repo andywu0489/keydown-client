@@ -12,6 +12,7 @@ const onSignUpSuccess = (responseData) => {
 const onSignUpFailure = () => {
   $('.alert').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Something went wrong. Please try again.</div>')
+  setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onSignInSuccess = (responseData) => {
@@ -63,8 +64,9 @@ const onSignOutSuccess = () => {
   setTimeout(function () { $('#user-message').html('') }, 1000)
   $('.game-over').hide()
   clearInterval(store.timer)
-  $('#content').hide()
+  $('.my-scores').hide()
   gameEvents.timeleft = 30
+  gameEvents.score = 0
   console.log(gameEvents.timeleft)
 }
 
