@@ -1,38 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
 
 .row {
-  border: 1px solid black;
   height: 75px;
   width: 200px;
+
 }
 
 h1 {
+  font-family: 'Press Start 2P', cursive;
   color: red;
 }
 
 .box {
-  border: 1px solid black;
+  border-bottom: 2px solid black;
 }
 
 body {
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: flex-end;
   margin: auto;
   width: auto;
-  //border: 1px solid black;
 }
-
-// .box-one {
-//   height: 50px;
-//   width: 30px;
-//   background-color: red;
-// }
 
 .auth-container {
     margin-top: 3vh;
     height: 97vh;
     width: 50vw;
+    font-family: 'Press Start 2P', cursive;
   }
 
 .game-container {
@@ -48,6 +40,8 @@ body {
 
 .home {
   display: none;
+  font-family: 'Press Start 2P', cursive;
+
 }
 
 .game-over {
@@ -76,11 +70,118 @@ body {
 
 .key {
   font-family: 'Press Start 2P', cursive;
-  font-size: 20px;
+  font-size: 35px;
   color: gold;
 }
 
 .down {
   font-family: 'Monofett', cursive;
-  font-size: 50px;
+  font-size: 70px;
+}
+
+.final-score {
+  font-family: 'Press Start 2P', cursive;
+}
+
+ .accuracy {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.score {
+  font-family: 'Press Start 2P', cursive;
+}
+
+#countdown {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+}
+
+nav {
+  border-bottom: 1px solid black;
+}
+
+.replay {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  background: gold;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.start-game {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  background: gold;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.btn-primary {
+  background: gold;
+  border: 0;
+  color: black;
+}
+
+#sign-in-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#sign-up-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+.alert {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#change-password-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#sign-out-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#home-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+#index-button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+// .listed-items {
+//   font-family: 'Press Start 2P', cursive;
+//   font-size: 12px;
+//   text-align: center;
+// }
+
+#delete {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  background: gold;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#change-password-modal {
+  font-family: 'Press Start 2P', cursive;
+}
+
+#user-message {
+  height: 10px;
+}
+
+.my-scores {
+  display: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  text-align: center;
 }
