@@ -241,9 +241,14 @@ const onWrongClick = () => {
   totalClicks = correctClicks + missedClicks
   accuracy1 = correctClicks / totalClicks * 100
   accuracy = Math.floor(accuracy1 * 100) / 100
+  $('.start-jumbotron').css('border', '15px solid red')
+  setTimeout(function () { $('.start-jumbotron').css('border', 0) }, 50)
 }
 
 const onClick = () => {
+  console.log('hi')
+  $('.start-jumbotron').css('border', '15px solid #6bf442')
+  setTimeout(function () { $('.start-jumbotron').css('border', 0) }, 50)
   shiftBoard()
   generateRow()
   clearSpaces()
