@@ -67,7 +67,6 @@ const onSignOutSuccess = () => {
   $('.my-scores').hide()
   gameEvents.timeleft = 30
   gameEvents.score = 0
-  console.log(gameEvents.timeleft)
 }
 
 module.exports = {

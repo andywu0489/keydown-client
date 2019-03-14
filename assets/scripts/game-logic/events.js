@@ -194,13 +194,6 @@ const clearSpaces = () => {
 
 let missedClicks = 0
 
-// const checkZXCVPressed = (event) => {
-//   if (event.which === 90 || event.which === 88 || event.which === 67 || event.which === 86) {
-//     missedClicks = missedClicks + 1
-//     console.log(missedClicks)
-//   }
-// }
-
 const checkZPressed = (event) => {
   if (event.which === 90 && board[0][0] === 'x') {
     onClick()
