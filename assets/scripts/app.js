@@ -61,4 +61,14 @@ $(() => {
   }, function () {
     $('.replay').css('color', 'black')
   })
+  $('.btn-default').hover(function () {
+    $('.btn-default').css('background-color', '#275fd8')
+  }, function () {
+    $('.btn-default').css('background-color', 'gold')
+  })
+  $('.btn-default').hover(function () {
+    $('.btn-default').css('color', 'white')
+  }, function () {
+    $('.btn-default').css('color', 'black')
+  })
 })

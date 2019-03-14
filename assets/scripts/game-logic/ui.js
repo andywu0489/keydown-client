@@ -11,6 +11,7 @@ const onGetGamesSuccess = (data) => {
   $('.alert').alert('close')
   $('#content').html(showGamesHtml)
   if ($('#content').is(':empty')) {
+    $('.my-scores').show()
     $('#user-message').html('<div class="alert alert-danger" role="alert">No games played.</div>')
     setTimeout(function () { $('#user-message').html('') }, 1000)
   } else {

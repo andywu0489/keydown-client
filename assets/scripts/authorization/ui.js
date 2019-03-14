@@ -54,7 +54,7 @@ const onSignOutSuccess = () => {
   $('.main-container').hide()
   $('.auth-container').show()
   $('.dash-nav').hide()
-  $('.dash-nav-1').show()
+  $('#sign-up-button').show()
   $('.auth-jumbotron').show()
   $('#upload-cards').empty()
   $('.start-jumbotron').hide()
