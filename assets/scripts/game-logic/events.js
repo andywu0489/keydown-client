@@ -72,16 +72,16 @@ const layoutSpaces = () => {
   }
 }
 
-let timeleft = 30
+store.timeleft = 30
 
 const countdown = () => {
   store.timer = setInterval(function () {
-    $('#countdown').html(`Time Remaining: ${timeleft}`)
-    timeleft -= 1
-    if (timeleft < 0) {
+    $('#countdown').html(`Time Remaining: ${store.timeleft}`)
+    store.timeleft -= 1
+    if (store.timeleft < 0) {
       clearInterval(store.timer)
       gameOver()
-      timeleft = 30
+      store.timeleft = 30
     }
   }, 1000)
 }
@@ -100,11 +100,11 @@ const onStartGame = (score, accuracy) => {
   api.createGame(data)
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFailure)
-  $('#countdown').html(`Time Remaining: ${timeleft}`)
+  $('#countdown').html(`Time Remaining: ${store.timeleft}`)
   countdown()
   clearSpaces()
   board = []
-  score = 0
+  store.score = 0
   correctClicks = 0
   missedClicks = 0
   $('#game-board').show()
@@ -120,10 +120,10 @@ const onStartGame = (score, accuracy) => {
     generateRow()
   }
   layoutSpaces()
-  $('.score').html(`Score: ${score}`)
+  $('.score').html(`Score: ${store.score}`)
   $('.home').hide()
   $('.game-over').hide()
-  timeleft = 30
+  store.timeleft = 30
 }
 
 // UPDATE GAME
@@ -131,7 +131,7 @@ const onUpdateGame = (score, accuracy) => {
   const data =
   {
     'game': {
-      'score': score,
+      'score': store.score,
       'accuracy': accuracy,
       'owner': store.user._id
     }
@@ -148,10 +148,10 @@ const gameOver = () => {
   $(document).off('keydown', checkVPressed)
   $('#game-board').hide()
   // $('.start-game').show()
-  $('.final-score').html(`Score: ${score}`)
+  $('.final-score').html(`Score: ${store.score}`)
   $('.accuracy').html(`Accuracy: ${accuracy}%`)
   $('.game-over').show()
-  score = 0
+  store.score = 0
 }
 
 const shiftBoard = () => {
@@ -196,40 +196,40 @@ let missedClicks = 0
 const checkZPressed = (event) => {
   if (event.which === 90 && board[0][0] === 'x') {
     onClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   } else if (event.which === 90 && board[0][0] !== 'x') {
     onWrongClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   }
 }
 
 const checkXPressed = (event) => {
   if (event.which === 88 && board[0][1] === 'x') {
     onClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   } else if (event.which === 88 && board[0][1] !== 'x') {
     onWrongClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   }
 }
 
 const checkCPressed = (event) => {
   if (event.which === 67 && board[0][2] === 'x') {
     onClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   } else if (event.which === 67 && board[0][2] !== 'x') {
     onWrongClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   }
 }
 
 const checkVPressed = (event) => {
   if (event.which === 86 && board[0][3] === 'x') {
     onClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   } else if (event.which === 86 && board[0][3] !== 'x') {
     onWrongClick()
-    onUpdateGame(score, accuracy)
+    onUpdateGame(store.score, accuracy)
   }
 }
 
@@ -260,17 +260,17 @@ const onClick = () => {
   clearSpaces()
   layoutSpaces()
   add()
-  $('.score').html(`Score: ${score}`)
+  $('.score').html(`Score: ${store.score}`)
   correctClicks = correctClicks + 1
   totalClicks = correctClicks + missedClicks
   accuracy1 = correctClicks / totalClicks * 100
   accuracy = Math.floor(accuracy1 * 100) / 100
 }
 
-let score = 0
+store.score = 0
 
 const add = () => {
-  score = score + 100
+  store.score = store.score + 100
 }
 
 let totalClicks = 0
@@ -280,6 +280,7 @@ let accuracy1 = 0
 let accuracy = 0
 
 const onHome = () => {
+  store.timeleft = 30
   clearInterval(store.timer)
   $('#user-message').html('<div class="alert alert-success">Welcome Home</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
@@ -287,8 +288,7 @@ const onHome = () => {
   $('.home').show()
   $('.game-over').hide()
   $('.my-scores').hide()
-  timeleft = 30
-  score = 0
+  store.score = 0
   $(document).off('keydown', checkZPressed)
   $(document).off('keydown', checkXPressed)
   $(document).off('keydown', checkCPressed)
@@ -302,9 +302,9 @@ const onGetGames = function (responseData) {
   $('#game-board').hide()
   $('.home').hide()
   $('.game-over').hide()
+  store.timeleft = 30
   clearInterval(store.timer)
-  timeleft = 30
-  score = 0
+  store.score = 0
   $(document).off('keydown', checkZPressed)
   $(document).off('keydown', checkXPressed)
   $(document).off('keydown', checkCPressed)

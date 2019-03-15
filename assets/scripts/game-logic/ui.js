@@ -53,11 +53,18 @@ const onUpdateGameFailure = () => {
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
+const onDeleteGameFailure = () => {
+  $('.alert').alert('close')
+  $('#user-message').html('<div class="alert alert-danger" role="alert">Failed to delete game</div>')
+  setTimeout(function () { $('#user-message').html('') }, 1000)
+}
+
 module.exports = {
   onGetGamesSuccess,
   onGetGamesAfterDeleteSuccess,
   onCreateGameSuccess,
   onGetGamesFailure,
   onCreateGameFailure,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  onDeleteGameFailure
 }

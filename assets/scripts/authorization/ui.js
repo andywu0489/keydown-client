@@ -50,6 +50,8 @@ const onChangePasswordFailure = () => {
 }
 
 const onSignOutSuccess = () => {
+  store.timeleft = 30
+  clearInterval(store.timer)
   $('.alert').alert('close')
   $('.main-container').hide()
   $('.auth-container').show()
@@ -62,10 +64,8 @@ const onSignOutSuccess = () => {
   $('#user-message').html('<div class="alert alert-success" role="alert">Successfully signed out.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
   $('.game-over').hide()
-  clearInterval(store.timer)
   $('.my-scores').hide()
-  gameEvents.timeleft = 30
-  gameEvents.score = 0
+  store.score = 0
   $(document).off('keydown', gameEvents.checkZPressed)
   $(document).off('keydown', gameEvents.checkXPressed)
   $(document).off('keydown', gameEvents.checkCPressed)
