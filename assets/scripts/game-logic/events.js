@@ -289,6 +289,10 @@ const onHome = () => {
   $('.my-scores').hide()
   timeleft = 30
   score = 0
+  $(document).off('keydown', checkZPressed)
+  $(document).off('keydown', checkXPressed)
+  $(document).off('keydown', checkCPressed)
+  $(document).off('keydown', checkVPressed)
 }
 
 const onGetGames = function (responseData) {
@@ -301,6 +305,10 @@ const onGetGames = function (responseData) {
   clearInterval(store.timer)
   timeleft = 30
   score = 0
+  $(document).off('keydown', checkZPressed)
+  $(document).off('keydown', checkXPressed)
+  $(document).off('keydown', checkCPressed)
+  $(document).off('keydown', checkVPressed)
 }
 
 const onGetGamesAfterDelete = function () {
