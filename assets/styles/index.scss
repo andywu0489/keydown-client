@@ -12,7 +12,13 @@ h1 {
 }
 
 .box {
-  border-bottom: 2px solid black;
+  border-bottom: 3px solid black;
+  border-radius: 10px;
+}
+
+.box1 {
+  border-bottom: 3px solid black;
+  border-radius: 10px;
 }
 
 body {
@@ -157,12 +163,6 @@ nav {
   font-size: 12px;
 }
 
-// .listed-items {
-//   font-family: 'Press Start 2P', cursive;
-//   font-size: 12px;
-//   text-align: center;
-// }
-
 #delete {
   padding: 10px;
   border-radius: 5px;
@@ -192,20 +192,4 @@ nav {
 
 .btn-default {
   background-color: gold;
-}
-
-#1 {
-  border-radius: 0 0 0 5px;
-}
-
-#4 {
-  border-radius: 0 0 5px;
-}
-
-#21 {
-  border-radius: 5px 0 0;
-}
-
-#24 {
-  border-radius: 0 5px 0 0;
 }
