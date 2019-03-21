@@ -8,7 +8,8 @@ const onGetGamesSuccess = (data) => {
     return game2.score - game1.score
   }).slice(0, 3) })
 
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#content').html(showGamesHtml)
   if ($('#content').is(':empty')) {
     $('.my-scores').show()
@@ -22,7 +23,8 @@ const onGetGamesSuccess = (data) => {
 }
 
 const onGetGamesFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Failed to get games.</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
@@ -31,7 +33,8 @@ const onGetGamesAfterDeleteSuccess = function (data) {
   const showGamesHtml = showGamesTemplate({ games: data.games.sort(function (game1, game2) {
     return game2.score - game1.score
   }).slice(0, 3) })
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#content').html(showGamesHtml)
   $('#user-message').html('<div class="alert alert-success" role="alert">Successfully deleted game</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
@@ -42,19 +45,22 @@ const onCreateGameSuccess = (responseData) => {
 }
 
 const onCreateGameFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Failed to create game</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onUpdateGameFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Failed to update game</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onDeleteGameFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Failed to delete game</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }

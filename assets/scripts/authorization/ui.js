@@ -4,19 +4,22 @@ const gameEvents = require('../game-logic/events')
 // const gameEvents = require('../game-logic/events')
 
 const onSignUpSuccess = (responseData) => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-success" role="alert">Successfully signed-up! Please sign-in.</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onSignUpFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Something went wrong. Please try again.</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onSignInSuccess = (responseData) => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('body').css('background-image', '')
   $('.auth-container').hide()
   $('.auth-jumbotron').hide()
@@ -31,20 +34,23 @@ const onSignInSuccess = (responseData) => {
 }
 
 const onSignInFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger" role="alert">Something went wrong. Please try again.</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onChangePasswordSuccess = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-success">Successfully changed password</div>')
   $('#change-password-modal').modal('hide')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
 
 const onChangePasswordFailure = () => {
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('#user-message').html('<div class="alert alert-danger">Failed to change password. Please try again.</div>')
   setTimeout(function () { $('#user-message').html('') }, 1000)
 }
@@ -52,7 +58,8 @@ const onChangePasswordFailure = () => {
 const onSignOutSuccess = () => {
   store.timeleft = 30
   clearInterval(store.timer)
-  $('.alert').alert('close')
+  $('.alert-danger').alert('close')
+  $('.alert-success').alert('close')
   $('.main-container').hide()
   $('.auth-container').show()
   $('.dash-nav').hide()

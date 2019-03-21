@@ -61,6 +61,7 @@ body {
   margin-top: 3vh;
   height: 97vh;
   width: 50vw;
+  min-width: 354px;
 }
 
 .start-jumbotron {
@@ -72,6 +73,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  min-width: 354px;
 }
 
 .key {
@@ -192,4 +194,11 @@ nav {
 
 .btn-default {
   background-color: gold;
+}
+
+@media(max-width: 990px) {
+  #logo {justify-content: center;}
+  .auth-container {justify-content: center}
+  #myNavbar {justify-content: center;}
+  .game-container {justify-content: center;}
 }
